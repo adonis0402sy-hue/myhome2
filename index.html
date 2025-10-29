@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 명신여고 1학년 코더 | 포트폴리오</title>
+    <!-- Tailwind CSS CDN 로드 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons 로드 -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* 기본 폰트 설정 (Inter 폰트를 기반으로 한국어 가독성을 높입니다) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEF7F7; /* 아주 연한 핑크 배경 */
+            color: #333;
+            line-height: 1.6;
+        }
+        /* 연한 핑크색 계열의 사용자 정의 색상 팔레트 */
+        .bg-primary-pink { background-color: #F8BBD0; } /* 진한 연핑크 (버튼, 하이라이트) */
+        .text-primary-pink { color: #F8BBD0; }
+        .bg-secondary-pink { background-color: #FCE4EC; } /* 중간 연핑크 (카드 배경) */
+        .text-secondary-pink { color: #FCE4EC; }
+        .border-primary-pink { border-color: #F8BBD0; }
+
+        /* 섹션 간 부드러운 스크롤링 */
+        html { scroll-behavior: smooth; }
+
+        /* 프로젝트 카드 호버 효과 */
+        .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(248, 187, 208, 0.5); /* 핑크색 그림자 */
+        }
+
+        /* 모달 스타일 */
+        .modal {
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="selection:bg-primary-pink selection:text-white">
+
+    <!-- 1. 헤더 (고정 내비게이션 바) -->
+    <header id="header" class="sticky top-0 bg-white/95 backdrop-blur-sm shadow-md z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <h1 class="text-2xl font-extrabold text-primary-pink">
+                MYSG 코더 💖
+            </h1>
+            <!-- 데스크톱 내비게이션 -->
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#about" class="hover:text-primary-pink transition duration-300">소개</a>
+                <a href="#projects" class="hover:text-primary-pink transition duration-300">프로젝트</a>
+                <a href="#skills" class="hover:text-primary-pink transition duration-300">기술 스택</a>
+                <a href="#contact" class="hover:text-primary-pink transition duration-300">문의</a>
+            </nav>
+            <!-- 모바일 메뉴 버튼 -->
+            <button id="menu-button" class="md:hidden text-primary-pink p-2 rounded-full hover:bg-secondary-pink transition">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- 모바일 메뉴 (숨겨져 있음) -->
+        <div id="mobile-menu" class="hidden md:hidden pb-4 bg-white shadow-inner">
+            <nav class="flex flex-col space-y-2 px-4 font-medium">
+                <a href="#about" class="block py-2 text-center rounded-lg hover:bg-secondary-pink transition">소개</a>
+                <a href="#projects" class="block py-2 text-center rounded-lg hover:bg-secondary-pink transition">프로젝트</a>
+                <a href="#skills" class="block py-2 text-center rounded-lg hover:bg-secondary-pink transition">기술 스택</a>
+                <a href="#contact" class="block py-2 text-center rounded-lg hover:bg-secondary-pink transition">문의</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+        <!-- 2. 히어로/소개 섹션 -->
+        <section id="about" class="py-20 px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between min-h-screen-1/2">
+            <div class="md:w-3/5 text-center md:text-left mb-10 md:mb-0">
+                <p class="text-xl font-semibold mb-3 text-pink-500">안녕하세요! 👋</p>
+                <h2 class="text-5xl sm:text-6xl font-extrabold leading-tight mb-6">
+                    명신여고 1학년 <span class="text-primary-pink">전소이</span>입니다!
+                </h2>
+                <p class="text-lg text-gray-600 max-w-lg mx-auto md:mx-0 mb-8">
+                    일상의 문제를 해결하고 재미있는 경험을 제공하는 앱과 챗봇을 만드는 것을 좋아합니다. 저의 작품들을 통해 새로운 가치를 만들어내는 과정을 함께 나누고 싶어요.
+                </p>
+                <a href="#projects" class="inline-flex items-center bg-primary-pink text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-pink-600 transition duration-300 transform hover:scale-105">
+                    작품 보러가기 <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
+            </div>
+            <!-- 프로필 이미지 대체 SVG (연핑크 테마) -->
+            <div class="md:w-2/5 flex justify-center">
+                <svg width="300" height="300" viewBox="0 0 100 100" class="w-full max-w-xs md:max-w-sm rounded-full bg-secondary-pink p-4 shadow-xl">
+                    <circle cx="50" cy="50" r="45" fill="#FFFFFF" stroke="#F8BBD0" stroke-width="2"/>
+                    <path d="M75 50 C75 65 65 75 50 75 C35 75 25 65 25 50 C25 35 35 25 50 25 C65 25 75 35 75 50 Z" fill="#FCE4EC"/>
+                    <path d="M50 35 L40 50 L60 50 Z M50 65 L40 50 L60 50 Z" fill="#F06292"/>
+                    <!-- 코딩 아이콘 (브라켓) -->
+                    <path d="M35 40 L25 50 L35 60 M65 40 L75 50 L65 60" stroke="#F8BBD0" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 3. 프로젝트 섹션 -->
+        <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 bg-secondary-pink/50">
+            <h2 class="text-4xl font-bold text-center mb-12 text-pink-700">⭐ 주요 프로젝트</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 프로젝트 카드 1: 챗봇 -->
+                <div id="project-1" class="project-card bg-white p-6 rounded-xl shadow-lg border-2 border-primary-pink/30" data-title="나만의 학습 챗봇" data-desc="사용자의 학습 패턴을 분석하여 맞춤형 질문을 제공하는 인공지능 챗봇입니다. Python과 자연어 처리(NLP) 기술을 활용하여 구현했습니다.">
+                    <i data-lucide="bot" class="w-10 h-10 text-primary-pink mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-pink-800">나만의 학습 챗봇</h3>
+                    <p class="text-gray-600 mb-4 text-sm">Python, NLP, Flask</p>
+                    <p class="text-gray-700 truncate">사용자의 학습 패턴을 분석하여 맞춤형 질문을 제공하는 인공지능 챗봇입니다.</p>
+                    <button class="text-primary-pink mt-4 font-medium hover:underline view-project-btn" data-id="1">자세히 보기</button>
+                </div>
+
+                <!-- 프로젝트 카드 2: 모바일 앱 (가상의 TODO 앱) -->
+                <div id="project-2" class="project-card bg-white p-6 rounded-xl shadow-lg border-2 border-primary-pink/30" data-title="반짝 할 일 관리 앱" data-desc="학생들을 위한 심플하고 예쁜 디자인의 할 일(To-Do) 관리 모바일 웹 앱입니다. Vue.js 또는 React를 사용하여 개발했습니다.">
+                    <i data-lucide="list-checks" class="w-10 h-10 text-primary-pink mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-pink-800">반짝 할 일 관리 앱</h3>
+                    <p class="text-gray-600 mb-4 text-sm">HTML, CSS, JavaScript (React/Vue)</p>
+                    <p class="text-gray-700 truncate">학생들을 위한 심플하고 예쁜 디자인의 할 일(To-Do) 관리 모바일 웹 앱입니다.</p>
+                    <button class="text-primary-pink mt-4 font-medium hover:underline view-project-btn" data-id="2">자세히 보기</button>
+                </div>
+                
+                <!-- 프로젝트 카드 3: 웹 게임 -->
+                <div id="project-3" class="project-card bg-white p-6 rounded-xl shadow-lg border-2 border-primary-pink/30" data-title="픽셀 방탈출 게임" data-desc="순수 JavaScript와 HTML Canvas를 활용하여 제작한 간단한 2D 방탈출 웹 게임입니다. 사용자 인터페이스와 로직 설계에 참여했습니다.">
+                    <i data-lucide="gamepad-2" class="w-10 h-10 text-primary-pink mb-4"></i>
+                    <h3 class="text-2xl font-semibold mb-2 text-pink-800">픽셀 방탈출 게임</h3>
+                    <p class="text-gray-600 mb-4 text-sm">JavaScript, HTML Canvas</p>
+                    <p class="text-gray-700 truncate">순수 JavaScript와 HTML Canvas를 활용하여 제작한 간단한 2D 방탈출 웹 게임입니다.</p>
+                    <button class="text-primary-pink mt-4 font-medium hover:underline view-project-btn" data-id="3">자세히 보기</button>
+                </div>
+            </div>
+            
+            <div class="text-center mt-16">
+                <p class="text-lg text-pink-600">더 많은 작품들이 곧 업데이트됩니다! 🚀</p>
+            </div>
+        </section>
+
+        <!-- 4. 기술 스택 섹션 -->
+        <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-12 text-pink-700">🛠️ 나의 기술 스택</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- 기술 태그들 -->
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">Python</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">HTML & CSS (Tailwind)</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">JavaScript</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">Flask / Django</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">Chatbot (LLM API 연동)</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">Database (Firestore/SQL)</span>
+                <span class="bg-primary-pink/20 text-pink-900 font-semibold px-4 py-2 rounded-full text-lg shadow-sm">Git & GitHub</span>
+            </div>
+            
+            <div class="mt-12 text-center text-gray-600">
+                <p>배우는 것을 멈추지 않으며, 현재는 <span class="font-bold text-pink-600">React와 TypeScript</span>에 도전하고 있습니다!</p>
+            </div>
+        </section>
+
+        <!-- 5. 문의/연락처 섹션 -->
+        <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 bg-primary-pink/10 text-center">
+            <h2 class="text-4xl font-bold mb-6 text-pink-700">💌 함께 프로젝트를 해봐요!</h2>
+            <p class="text-lg text-gray-700 mb-8 max-w-xl mx-auto">
+                코딩이나 프로젝트에 관심 있는 분들의 연락을 환영합니다. 아래 정보로 편하게 연락주세요!
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-pink transform hover:scale-105 transition duration-300">
+                    <i data-lucide="mail" class="w-6 h-6 text-primary-pink mb-2 mx-auto"></i>
+                    <p class="font-bold text-pink-800">이메일</p>
+                    <a href="mailto:jeonsoi.ww@icloud.com" class="text-gray-600 hover:text-pink-500 transition">jeonsoi.ww@icloud.com</a>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary-pink transform hover:scale-105 transition duration-300">
+                    <i data-lucide="github" class="w-6 h-6 text-primary-pink mb-2 mx-auto"></i>
+                    <p class="font-bold text-pink-800">GitHub</p>
+                    <a href="https://github.com/" target="_blank" class="text-gray-600 hover:text-pink-500 transition">@jeonsoi</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. 푸터 -->
+    <footer class="bg-primary-pink text-white py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 MYSG Coder. All rights reserved. | 핑크색으로 코딩하기 🎀</p>
+        </div>
+    </footer>
+
+    <!-- 프로젝트 상세 정보 모달 (숨겨져 있음) -->
+    <div id="project-modal" class="modal fixed inset-0 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-xl p-8 max-w-lg w-full shadow-2xl relative transform transition-all duration-300 scale-95 opacity-0" id="modal-content-container">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-500 hover:text-pink-700 p-2 rounded-full hover:bg-secondary-pink transition">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 id="modal-title" class="text-3xl font-bold mb-4 text-pink-800">프로젝트 제목</h3>
+            <div id="modal-description" class="text-lg text-gray-700 mb-6">
+                프로젝트 상세 설명이 여기에 표시됩니다.
+            </div>
+            <a id="modal-link" href="#" target="_blank" class="inline-block bg-primary-pink text-white font-bold py-2 px-6 rounded-full hover:bg-pink-600 transition">
+                프로젝트 링크 (가상)
+            </a>
+        </div>
+    </div>
+
+
+    <script>
+        // Lucide Icons 초기화 (HTML에 아이콘을 렌더링)
+        lucide.createIcons();
+
+        // 1. 모바일 메뉴 토글 로직
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const iconElement = menuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                iconElement.setAttribute('data-lucide', 'menu');
+            } else {
+                iconElement.setAttribute('data-lucide', 'x');
+            }
+            lucide.createIcons(); // 아이콘 변경 후 다시 렌더링
+        });
+
+        // 2. 모달 관련 로직
+        const modal = document.getElementById('project-modal');
+        const modalContainer = document.getElementById('modal-content-container');
+        const closeBtn = document.getElementById('close-modal-btn');
+        const projectButtons = document.querySelectorAll('.view-project-btn');
+        const modalTitle = document.getElementById('modal-title');
+        const modalDescription = document.getElementById('modal-description');
+        const modalLink = document.getElementById('modal-link');
+
+        // 모달 열기 함수
+        function openModal(title, description) {
+            modalTitle.textContent = title;
+            modalDescription.textContent = description;
+            // 가상 링크 설정
+            modalLink.href = `#project-${title.replace(/\s/g, '-')}`; 
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // CSS 트랜지션 시작
+            setTimeout(() => {
+                modalContainer.classList.remove('scale-95', 'opacity-0');
+                modalContainer.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        // 모달 닫기 함수
+        function closeModal() {
+            modalContainer.classList.remove('scale-100', 'opacity-100');
+            modalContainer.classList.add('scale-95', 'opacity-0');
+
+            // 트랜지션이 끝난 후 hidden 클래스 추가
+            setTimeout(() => {
+                modal.classList.remove('flex');
+                modal.classList.add('hidden');
+            }, 300); 
+        }
+
+        // '자세히 보기' 버튼 클릭 이벤트 리스너 설정
+        projectButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const card = e.target.closest('.project-card');
+                const title = card.getAttribute('data-title');
+                const desc = card.getAttribute('data-desc');
+                openModal(title, desc);
+            });
+        });
+
+        // 모달 닫기 버튼 이벤트
+        closeBtn.addEventListener('click', closeModal);
+
+        // 모달 바깥 클릭 시 닫기
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // 3. 스크롤에 따른 헤더 배경색 변경 (선택 사항, 깔끔함을 위해 주석 처리)
+        // window.addEventListener('scroll', () => {
+        //     const header = document.getElementById('header');
+        //     if (window.scrollY > 50) {
+        //         header.classList.add('shadow-lg');
+        //         header.classList.remove('bg-white/95');
+        //         header.classList.add('bg-white');
+        //     } else {
+        //         header.classList.remove('shadow-lg');
+        //         header.classList.remove('bg-white');
+        //         header.classList.add('bg-white/95');
+        //     }
+        // });
+        
+        // 4. 모바일 메뉴에서 링크 클릭 시 메뉴 닫기
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                const iconElement = menuButton.querySelector('i');
+                iconElement.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+    </script>
+</body>
+</html>
